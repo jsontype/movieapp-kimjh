@@ -1,0 +1,38 @@
+.movie {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+}
+  
+.movie .movieImage {
+  width: 200px;
+}
+
+.movie .movieTitle {
+  flex-grow: 1;
+  text-decoration: none;
+  color: black;  
+}
+
+.movie .movieTitle:hover {
+  background-color: pink;
+}
+
+.movieTitle .ratingGood {
+  color: green;
+}
+
+.movieTitle .ratingSoso {
+  color: orange;
+}
+
+.movieTitle .ratingBad {
+  color: red;
+}
+
+.movie .movieYear {
+  font-size: 0.5rem;
+  color: red;
+  margin-right: 10px;
+}
