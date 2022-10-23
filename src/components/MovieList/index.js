@@ -11,7 +11,7 @@ export default function MovieList({ movies }) {
       <div className='movie' key={item.id}>
         <a className='movieTitle' href={item.url}>{item.title} {ratingIcon} &#40; 평점 : <span className={ratingClass}>{item.rating}</span> / 10 &#41;</a>
         <div className='movieYear'>{item.year}</div>
-        <img className='movieImage' src={item.background_image} alt={item.title}></img>
+        <img className='movieImage' src={item.large_cover_image} alt={item.title}></img>
       </div>
     )
   })
