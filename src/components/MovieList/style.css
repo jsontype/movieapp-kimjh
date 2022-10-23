@@ -16,7 +16,7 @@
 }
 
 .movie .movieTitle:hover {
-  background-color: pink;
+  background-color: gray;
 }
 
 .movieTitle .ratingGood {
