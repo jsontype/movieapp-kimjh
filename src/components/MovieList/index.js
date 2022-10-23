@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-export default function test({ movies }) {
+export default function MovieList({ movies }) {
   
   const render = movies.map((item) => {
     const ratingClass = item.rating >= 9 ? "ratingGood" : item.rating >= 7 ? "ratingSoso" : "ratingBad"
