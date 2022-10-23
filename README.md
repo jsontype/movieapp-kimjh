@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+[스타일 이슈]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+스타일: 무비 이미지 변경
+    background_color에서 해상도가 높은 cover image를 찾아 그것으로 변경
+스타일: 타이틀 후버링시 화면 개선
+    타이틀 a 태그에 후버링 했을 시 백그라운드 컬러 gray로 수정
+스타일: 앱 타이틀의 가운데 정렬
+    "무비 리스트" 문구를 화면 중간으로 표시 (text-align: center)
+스타일: 무비 이미지 폭 제한
+    영화 이미지 너비를 100px로 변경
+스타일: 리스트 간의 간격 개선
+    리스트 간의 간격을 10px 정도 주기 (좌우 주면 안되고 하단만 주기)
 
-## Available Scripts
+[로직 이슈]
 
-In the project directory, you can run:
+로직: 영화 평점의 표시
+    title 옆에 (8/10)의 형태로 표시
+로직: 영화 평점별 폰트 컬러 변경
+    (8/10) 전체의 폰트 컬러를 변경
+    8점 이상은 blue
+    6점 이상은 yellowgreen
+    6점 미만은 red
+    API 주소에서 ?sort=rating 쿼리스트링을 제거해서 테스트할 것
+로직: 영화 평점이 8점이상일 경우 hot icon 제목옆에 표시
+    ctrl cmd space 를 통해서 불타는 아이콘 넣기
+로직: 영화 평점 0일 때의 처리
+    "(평점 없음)"으로 표시
+로직: 영화 장르의 표시
+    title 밑에 0.5rem 사이즈로 Genre: Action, Comedy, ... 등으로 해당 영화의 모든 장르 표시
+    arr.genres 배열 안에 있음
+    arr.join(' ,')을 사용할 것
+    gray color로 줄 것
+로직: 영화 장르 배열의 length가 0일때의 처리
+    "장르: 정보없음"으로 표시
+로직: 영화 상세정보 토글 만들기
+    * 리스트를 클릭하면 a 태그로 이동하는 것이 아니라 리스트 아래쪽에, 이하 정보들의 표시를 토글로 on off한다.
+    타이틀: title_long
+    장르: genres
+    런타임: runtime
+    평점: rating
+    시놉시스: synopsis
+    토렌트 다운로드 링크: torrents
+    * 선택한 id만 나올 필요는 일단 없지만, 상세정보 컴포넌트는 분리해서 관리한다.
 
-### `npm start`
+[리팩토링 이슈]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+리팩토링: 메뉴 제목의 컴포넌트화
+    const [menu, setMenu] = useState('무비 리스트') 로 기존 제목을 {menu} 스테이트로 변경
+    App.js의 <h1>무비 리스트</h1> 부분을 Title.js 만들어서 
+    <Title menu={menu} /> 로 컴포넌트화해서 분리시키기 (프롭도 줄것 menu)
+리팩토링: MovieList 컴포넌트화
+리팩토링: 컴포넌트 쪼개기
+퍼포먼스튜닝: MovieList 컴포넌트 랜더링 최적화
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[옵션]
+리팩토링: TodoList API를 불러와서 투두리스트 메뉴 및 컴포넌트 구현
+    API: https://jsonplaceholder.typicode.com/todos
+리팩토링: UserList API를 불러와서 유저리스트 메뉴 및 컴포넌트 구현
+    API: https://jsonplaceholder.typicode.com/users
+퍼포먼스튜닝: TodoList 컴포넌트 랜더링 최적화
+퍼포먼스튜닝: UserList 컴포넌트 랜더링 최적화
