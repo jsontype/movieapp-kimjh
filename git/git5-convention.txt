@@ -25,9 +25,3 @@
         type은 소문자여야 한다. (type-case규칙).
         type은 반드시 지정해야 한다. (type-empty규칙).
         scope은 소문자여야 합니다. (scope-case규칙).
-        subject는 다음 형식 중 하나여야 합니다. (subject-case규칙).
-        sentence-case: (예. Sentence case)
-        start-case: (예. Start Case)
-        pascal-case: (예. PascalCase)
-        upper-case: (예. UPPERCASE)
-        snake_case: (예. snake_case)
