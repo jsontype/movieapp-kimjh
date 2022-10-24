@@ -7,6 +7,7 @@ function App() {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
+    // fetch('https://yts.mx/api/v2/list_movies.json?sort_by=rating')
     fetch('https://yts.mx/api/v2/list_movies.json')
       .then((res) => { return res.json() })
       .then((json) => { setMovies(json.data.movies) })
