@@ -17,6 +17,7 @@ export default function MovieList({ movies }) {
           &#40; 평점 : <span className={ratingClass}>{ratingScore}</span> / 10 &#41;
           <div>장르 : {genres}</div>
           <div>상영시간 : {item.runtime}</div>
+          <div>줄거리 요약 : {item.summary}</div>
         </a>
         <div className='movieYear'>{item.year}</div>
         { image && <img className='movieImage' src={image} alt={item.title}></img> }
