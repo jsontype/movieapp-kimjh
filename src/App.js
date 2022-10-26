@@ -13,7 +13,7 @@ function App() {
       .then((json) => { setMovies(json.data.movies) })
   }, [])
 
-  // console.log('movies: ', movies)
+  console.log('movies: ', movies)
 
   return (
     <div className="App">
