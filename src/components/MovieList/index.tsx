@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import MovieDetail from './MovieDetail'
+import './style.css'
 
 type MovieListProps = {
     movies: any[]

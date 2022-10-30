@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import AppTitle from './components/AppTitle'
 import MovieList from './components/MovieList'
 import './App.css'
 
@@ -16,7 +17,7 @@ function App() {
   // XML
   return (
     <div className="App">
-      <h1>무비 리스트</h1>
+      <AppTitle />
       <MovieList movies={movies} />
     </div>
   )
