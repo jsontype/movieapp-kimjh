@@ -9,7 +9,8 @@ export default function MovieDetail({ item }: MovieDetailProps) {
     const hotIcon = item.rating >= 9 && '🔥'
     const genres = item.genres.join(', ')
     const runtime = item.runtime + "min"|| "상영시간 정보없음"
-    const summary = item.summary || "줄거리 없음"
+    const summary = item.summary ? item.summary : item.synopsis
+    console.log(summary)
     const copyUrl = (url: string, idx: number) => {
         navigator.clipboard.writeText(url)
         alert("토렌토" + idx + " 주소가 복사되었습니다")
