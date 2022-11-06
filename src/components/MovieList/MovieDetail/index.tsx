@@ -10,10 +10,9 @@ export default function MovieDetail({ item }: MovieDetailProps) {
     const genres = item.genres.join(', ')
     const runtime = item.runtime + "min"|| "상영시간 정보없음"
     const summary = item.summary ? item.summary : item.synopsis
-    console.log(summary)
     const copyUrl = (url: string, idx: number) => {
         navigator.clipboard.writeText(url)
-        alert("토렌토" + idx + " 주소가 복사되었습니다")
+        console.log("토렌토" + idx + " 주소가 복사되었습니다")
     }
 
     const torrents = item.torrents.map((item: any, idx: number) => {
@@ -26,9 +25,9 @@ export default function MovieDetail({ item }: MovieDetailProps) {
     })
     
     const detail = (
-        <div>
-            <div>{genres}</div>
-            <div>{runtime}</div>
+        <div className='movieDetail'>
+            <div>장르: {genres}</div>
+            <div>러닝타임: {runtime}</div>
             <div><span>{hotIcon}</span> 평점 : <span className={movieRank}>{item.rating}</span> / 10</div>
             <div>{summary}</div>
             <div>{torrents}</div>
