@@ -1,12 +1,18 @@
-.movieTitle {
+.newsTitle {
     display: block;
     text-decoration: none;
     color: black;
     border: 1px solid gray;
     width: 500px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.movieTitle:hover {
+.newsTitle:hover {
     background: gray;
+}
+
+.unknown {
+    color:  red;
+    font-style: italic;
+    font-size: 15px;
 }

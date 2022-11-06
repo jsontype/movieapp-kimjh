@@ -18,13 +18,13 @@ export default function MovieList({ movies }: MovieListProps) {
 
         console.log(isDetail)
 
-        // setItemId(item.id)
-        // console.log("imteId = " + itemId)
-        // console.log("item.id = d" + item.id)
-      
       return (
         <div key={item.id}>
-          <div className='movieTitle' onClick={onClick}>{item.title}</div>         
+          <div className='movieTitle' onClick={onClick}>
+            {item.title}
+            <br/><a href={item.url}>바로가기</a>
+          </div>
+  
           { isDetail && item.id === id && <MovieDetail item={item} /> }
           <img src={item.large_cover_image} alt={item.title} /> 
         </div>
