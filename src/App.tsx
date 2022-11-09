@@ -4,7 +4,7 @@ import AppTitle from './components/AppTitle'
 import MovieList from './components/MovieList'
 import NewsList from './components/NewsList'
 
-import './App.css'
+import './App.scss'
 
 function App() {
   // JS

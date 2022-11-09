@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.scss'
 
 type MovieDetailProps = {
     item: any
