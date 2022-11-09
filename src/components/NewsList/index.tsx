@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import styles from './style.module.scss'
 
 type NewsListProps = {
   news: any[]
@@ -13,7 +13,7 @@ export default function NewsList({news} :NewsListProps) {
     const comments = item.comments_count && '🖌' + item.comments_count
 
     return (
-          <div className='newsTitle' key={item.id}>
+          <div className={styles.newsTitle} key={item.id}>
           <a href={item.url}>{item.title}</a>
           <br/>{ readMore }&nbsp;&nbsp;&nbsp;&nbsp;{ comments }
           <br/>From:<span  className={domain}>{domain}</span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import styles from './style.module.scss'
 
 type MovieDetailProps = {
     item: any
@@ -26,7 +26,7 @@ export default function MovieDetail({ item }: MovieDetailProps) {
     })
     
     const detail = (
-        <div className='movieDetail'>
+        <div className={styles.movieDetail}>
             <div>장르: {genres}</div>
             <div>러닝타임: {runtime}</div>
             <div><span>{hotIcon}</span> 평점 : <span className={movieRank}>{item.rating}</span> / 10</div>

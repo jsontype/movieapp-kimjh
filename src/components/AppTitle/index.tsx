@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import styles from './style.module.scss'
 
 type NameProps = {
   name: string
@@ -7,6 +7,6 @@ type NameProps = {
 export default function AppTitle({name}: NameProps) {
     const titleName = name === 'movie' ? '무비' : '뉴스'
   return (
-    <h1 className="titleStyle">{titleName} 리스트</h1>
+    <h1 className={styles.titleStyle}>{titleName} 리스트</h1>
   )
 }
