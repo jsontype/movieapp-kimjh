@@ -1,1 +1,34 @@
-@import '../../../styles/MovieDetail.scss';
+@import '../../../styles/resources.scss';
+
+@mixin border-box($border-top, $px) {
+    display: block;
+    text-decoration: none;
+    color: $color-black;
+    border: 1px solid gray;
+    @if ($border-top) {
+        border-top: $px;
+    }
+    width: $width-border-form;
+    margin-bottom: 10px;
+}
+
+.movieRankGood {
+    color: $color-blue;
+}
+
+.movieRankSoso {
+    color: $color-orange;
+}
+
+.movieRankBad {
+    color: $color-red;
+}
+
+.torrent {
+    display: $color-black;
+    color: $color-gray;
+}
+
+.movieDetail {
+    @include border-box(true, 0);
+}
