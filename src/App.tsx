@@ -33,6 +33,7 @@ function App() {
       <div>
         <button onClick={ () => setViewList(!viewList)}>ChangeApp</button>
       </div>
+
       <div className="App">
         <AppTitle name={viewList ? 'movie' : 'news'}/>
         {

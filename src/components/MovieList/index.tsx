@@ -16,7 +16,7 @@ export default function MovieList({ movies }: MovieListProps) {
             setId(item.id)
         }
 
-        console.log(isDetail)
+        console.log('isDetail: '+isDetail)
 
       return (
         <div key={item.id}>

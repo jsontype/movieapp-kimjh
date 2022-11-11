@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { skipPartiallyEmittedExpressions } from 'typescript'
 import './style.scss'
 
 type MovieDetailProps = {
@@ -11,17 +12,23 @@ export default function MovieDetail({ item }: MovieDetailProps) {
     const genres = item.genres.join(', ')
     const runtime = item.runtime + "min"|| "상영시간 정보없음"
     const summary = item.summary ? item.summary : item.synopsis
-    const copyUrl = (url: string, idx: number) => {
-        navigator.clipboard.writeText(url)
-        console.log("토렌토" + idx + " 주소가 복사되었습니다")
-    }
+
+    const [isIidx, setIsIdx] = useState(0)
 
     const torrents = item.torrents.map((item: any, idx: number) => {
+        const disIdx = idx + 1
+        const copyUrl = (url: string, idx: number) => {
+            navigator.clipboard.writeText(url)
+            setIsIdx(idx)
+            console.log('copyUrl ; ' + item.url)
+        }
+    
+
         return (
-            <div key={idx}>토렌트{idx + 1}&nbsp;
-                <button type="button" onClick={ () => copyUrl(item.url, idx + 1)}>주소복사</button>
-                &nbsp;{item.url}
-            </div>
+        <div>
+            <button type="button" onClick={ () => copyUrl(item.url, disIdx)}>토렌트{disIdx}URL복사</button>
+            <span className="coopyUrl"> { disIdx === isIidx ? '토렌트' + disIdx + 'URL복사' : ''  }</span>
+        </div>
         )
     })
     

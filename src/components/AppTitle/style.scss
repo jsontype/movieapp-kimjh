@@ -1,1 +1,6 @@
-@import '../../styles/AppTitle.scss';
+@import '../../styles/resources.scss';
+
+.titleStyle {
+    font-size: 35px;
+    text-align: $app-center;
+}
