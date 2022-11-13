@@ -11,7 +11,7 @@ const onClick = (idx: string | number) => {
 
 const Header = ({names}: NameProps) => {
   
-  const result = names.map(
+  const resultTitles = names.map(
 
     (name, idx) => 
       <div className={styles.appName} onClick={() => onClick(idx)}>{name}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -21,7 +21,7 @@ const Header = ({names}: NameProps) => {
   return (
     <h1 className={styles.titleStyle}>
       <ul>
-        {result}
+        {resultTitles}
       </ul>
     </h1>
   )

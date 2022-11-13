@@ -1,4 +1,4 @@
-@import '../../styles/resources.scss';
+@import '../../Styles/resources.scss';
 
 .movieTitle {
     display: $movieTitle_display_color;
@@ -6,10 +6,11 @@
     color: $movieTitle_display_color;
     border: 1px solid $color_gray;
     border-bottom: 0px;
-    width: 498px;
+    width: $border-width;
     margin-top: 20px;
 }
 
 .movieTitle:hover {
+    cursor: pointer;
     background: $color_gray;
 }
