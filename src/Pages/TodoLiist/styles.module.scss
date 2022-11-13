@@ -1,0 +1,39 @@
+@import '../../Styles/resources.scss';
+@mixin hover($hoverVar) {
+  cursor: pointer;
+  @if ($hoverVar) {
+    background-color: $color-yellow;
+  }
+  @else {
+    background-color: $color-black;
+    font-size: 16px;
+  }
+}
+
+.App {
+  margin: 20px;
+}
+
+h1 {
+  text-decoration: none;
+  color: $color-gray;
+}
+
+.checked {
+  color: $color-gray;
+}
+
+.checked:hover {
+  @include hover(true);
+}
+
+.deleteBtn {
+  font-size: 3px;
+}
+
+.deleteBtn:hover {
+  @include hover(false);
+}
+.todo {
+  margin: 20px;
+}

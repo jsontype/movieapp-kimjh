@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MovieDetail from './MovieDetail'
-import './style.scss'
+import styles from './style.module.scss'
 
 type MovieListProps = {
     movies: any[]
@@ -16,11 +16,9 @@ export default function MovieList({ movies }: MovieListProps) {
             setId(item.id)
         }
 
-        console.log('isDetail: '+isDetail)
-
       return (
         <div key={item.id}>
-          <div className='movieTitle' onClick={onClick}>
+          <div className={styles.movieTitle} onClick={onClick}>
             {item.title}
             <br/><a href={item.url}>바로가기</a>
           </div>

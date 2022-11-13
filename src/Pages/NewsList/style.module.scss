@@ -1,0 +1,33 @@
+@import '../../Styles/resources.scss';
+
+@mixin hasDomain($isDomain) {
+    @if ($isDomain) {
+        color:  $color-gray;
+        font-size: $font-mid;
+    } 
+    @else {
+        color:  $color-red;
+        font-style: $font-italic;
+        font-size: $font-small;
+    }
+}
+.newsTitle {
+    display: block;
+    text-decoration: none;
+    color: $color-black;
+    border: 1px solid $color_gray;
+    width: $border-width;
+    margin-bottom: 20px;
+}
+
+.linkUrl:hover {
+    background: $color_gray;
+}
+
+.isDomain {
+    /** 
+        ERROR:
+        isDomain에서 파라메터를 받아서 mixin hasDomain의 $isDomain값으로 안넘겨짐  
+    */
+    @include hasDomain(true);
+}
