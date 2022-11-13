@@ -1,0 +1,10 @@
+@import '../../styles/resources.scss';
+
+$app-center: center;
+
+.titleStyle {
+    font-size: $font-title;
+    text-align: $app-center;
+    background-color: $background-color-yellowgreen;
+    width: $width-title;
+}
