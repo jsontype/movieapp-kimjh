@@ -1,81 +1,78 @@
-import React, { useState, useEffect, useRef } from 'react'
-import styles from './styles.module.scss'
+import React, { useState, useRef } from "react";
+import styles from "./styles.module.scss";
+
+// type TodoListItemProps = {};
 
 type TodoListProps = {
-  todos: any[],
-  setChildTotods: any[],
-}
+  todos: any[];
+  setTodos: (value: any) => void;
+};
 
-export default function TodoList({todos, setChildTotods}: TodoListProps) {
-  //JS
-  //  const [todosProp, setTodosProp] = useState([])
+export default function TodoList({ todos, setTodos }: TodoListProps) {
+  const [text, setText] = useState("");
+  const nextId = useRef(1);
 
-    //   // 삭제
-    const onDelete = (id: string) => {
-      const result = todos.filter(item => { return item.id !== id })
-      // const setChildTotods = () => {
-      //   setChildTotods(result)
-      // }
-    
-      console.log(id+ 'onDelete' + result)
-      // setTodosProp(result)
-      // setTodosProp(todos.filter(item => { return item.id}
-    }
-    // 수정  
-    const onChecked = (id: string) => {
-      const result = todos.map(item => { return item.id === id ? { ...item, completed: !item.completed } : { ...item }})
-      // setTodos(result)
-      console.log('onChecked'+ id, result)
-    }
-  const render =   todos.map(item => {
-      const titleClass = item.completed ? styles.checked : 'unchecked'
+  const onSumbit = (e: { preventDefault: () => void }) => {
+    e.preventDefault(); // form의 리다이렉팅을 방지
+    onCreate();
+    setText("");
+  };
 
+  const onCreate = () => {
+    setTodos([
+      ...todos,
+      {
+        completed: false,
+        id: nextId.current,
+        title: text,
+        userId: 1,
+      },
+    ]);
+    nextId.current++;
+  };
+
+  const onChange = (e: { target: { value: React.SetStateAction<string> } }) => {
+    setText(e.target.value);
+  };
+
+  const onDelete = (id: string) => {
+    const result = todos.filter((item) => {
+      return item.id !== id;
+    });
+    setTodos(result);
+  };
+
+  const onChecked = (id: string) => {
+    const result = todos.map((item) => {
+      return item.id === id
+        ? { ...item, completed: !item.completed }
+        : { ...item };
+    });
+    setTodos(result);
+  };
+
+  const render = todos.map((item) => {
+    const titleClass = item.completed ? styles.checked : "unchecked";
     return (
       <div className={styles.todo} key={item.id}>
         <span>#{item.id} / </span>
-        <span className={titleClass} onClick={() => onDelete(item.id)}>제목: {item.title} {item.completed && '👍'}</span>
-        <span className={styles.deleteBtn} onClick={() => onChecked(item.id)}>❌</span>
+        <span className={titleClass} onClick={() => onChecked(item.id)}>
+          제목: {item.title} {item.completed && "👍"}
+        </span>
+        <span className={styles.deleteBtn} onClick={() => onDelete(item.id)}>
+          ❌
+        </span>
       </div>
-        )
-    })
+    );
+  });
 
-    return (
-        <>
-            {render}
-        </>
-    )
+  return (
+    <div>
+      <form onSubmit={onSumbit}>
+        <input type="text" onChange={onChange} value={text} />
+        <button type="submit">Send</button>
+      </form>
+      <div>{render}</div>
+    </div>
+  );
 }
-
-
-  // JS
-  // const render = todos.map((item: any[]) => {
-  //   // 삭제
-  //   const onDelete = (id: string) => {
-  //     const result = todos.filter(item => { return item.id !== id })
-  //     setTodos(result)
-  //   }
-  //   // 수정  
-  //   const onChecked = (id) => {
-  //     const result = todos.map(item => { return item.id === id ? { ...item, completed: !item.completed } : { ...item }})
-  //     setTodos(result)
-    // }
-    // const titleClass = item.completed ? styles.checked : 'unchecked'
-    // return (
-      // <div className={styles.todo} key={item.id}>
-      //   <span>#{item.id} / </span>
-      //   <span className={titleClass} onClick={() => onChecked(item.id)}>제목: {item.title} {item.completed && '👍'}</span>
-      //   <span className={styles.deleteBtn} onClick={() => onDelete(item.id)}>❌</span>
-      // </div>
-  //   )
-  // })
-
-  // XML
-  // return (
-  //   <div className={styles.App}>
-  //     <form onSubmit={onCreate}>
-  //     <div>{render}</div>
-  //       <input name="title" type="text" onChange={onChange} value={text} required></input>
-  //       <button type="submit">등록</button>
-  //     </form>
-  //   </div>
-  // )
