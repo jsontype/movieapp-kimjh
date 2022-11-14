@@ -26,22 +26,15 @@
 }
 
 .torrent {
-<<<<<<< HEAD:src/Pages/MovieList/MovieDetail/style.module.scss
-    display: block;
-=======
     display: $color-black;
->>>>>>> master:src/components/MovieList/MovieDetail/style.module.scss
     color: $color-gray;
 }
 
 .movieDetail {
     @include border-box(true, 0);
 }
-<<<<<<< HEAD:src/Pages/MovieList/MovieDetail/style.module.scss
 
 .coopyUrl {
     font-size: $font-small;
     color: $color-gray;
 }
-=======
->>>>>>> master:src/components/MovieList/MovieDetail/style.module.scss

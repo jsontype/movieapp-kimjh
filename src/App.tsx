@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import MovieList from "./Pages/MovieList/index";
 import NewsList from "./Pages/NewsList/index";
 import TodoList from "./Pages/TodoLiist";
-
 import styles from "./App.module.scss";
 
 function App() {
@@ -16,13 +15,16 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const header = names.map((name, idx) => (
-    <span className={styles.appName} onClick={() => onClick(String(idx))}>
+    <span
+      className={styles.appName}
+      onClick={() => onClick(String(idx))}
+      key={idx}
+    >
       {name}&nbsp;&nbsp;&nbsp;&nbsp;
     </span>
   ));
   const onClick = (idx: string) => {
     setViewList(Number(idx));
-    console.log("App-idx : " + idx);
   };
   useEffect(() => {
     fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
