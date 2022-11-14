@@ -11,11 +11,24 @@ type TodoListProps = {
 export default function TodoList({ todos, setTodos }: TodoListProps) {
   const [text, setText] = useState("");
   const nextId = useRef(1);
+  const [isError, setIsError] = useState(false);
+  const [inputStyle, setInputStyle] = useState(styles.inputNormal);
+
+  // const inputStyle = isError ? styles.inputNormal : styles.inputError;
 
   const onSumbit = (e: { preventDefault: () => void }) => {
     e.preventDefault(); // form의 리다이렉팅을 방지
-    onCreate();
-    setText("");
+
+    // p1 삼항연사자를 쓰는 법?
+    if (text.length === 0) {
+      setIsError(true);
+      setInputStyle(styles.inputError);
+    } else {
+      onCreate();
+      setText("");
+      setIsError(false);
+      setInputStyle(styles.inputNormal);
+    }
   };
 
   const onCreate = () => {
@@ -25,6 +38,7 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
         completed: false,
         id: nextId.current,
         title: text,
+
         userId: 1,
       },
     ]);
@@ -69,8 +83,16 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
   return (
     <div>
       <form onSubmit={onSumbit}>
-        <input type="text" onChange={onChange} value={text} />
+        <input
+          className={inputStyle}
+          type="text"
+          onChange={onChange}
+          value={text}
+        />
         <button type="submit">Send</button>
+        <span className={styles.ErrorMsg}>
+          {isError && "할일을 입력해주십시요"}
+        </span>
       </form>
       <div>{render}</div>
     </div>
