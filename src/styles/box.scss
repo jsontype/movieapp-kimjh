@@ -1,14 +1,18 @@
 @import './font';
 @import './border';
 
+/** components styles */
+
 @mixin border-box($border-top, $px) {
     display: block;
     text-decoration: none;
     color: $color-black;
     border: 1px solid $color-gray;
+
     @if ($border-top) {
         border-top: $px;
     }
+
     width: $width-border-form;
     margin-bottom: 10px;
 }

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 // import { skipPartiallyEmittedExpressions } from 'typescript'
-import styles from './style.module.scss'
+import styles from "./style.module.scss";
 
 type MovieDetailProps = {
-    item: any
-}
+  item: any;
+};
 
 export default function MovieDetail({ item }: MovieDetailProps) {
   const movieRank =

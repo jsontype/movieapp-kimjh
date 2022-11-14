@@ -2,9 +2,11 @@
 
 @mixin hover($hoverVar) {
   cursor: pointer;
+
   @if ($hoverVar) {
     background-color: $color-yellow;
   }
+
   @else {
     background-color: $color-black;
     font-size: 16px;
@@ -23,6 +25,7 @@
   }
 
 }
+
 .App {
   margin: 20px;
 }
@@ -47,9 +50,11 @@ h1 {
 .deleteBtn:hover {
   @include hover(false);
 }
+
 .todo {
   margin: 20px;
 }
+
 .inputNormal {
   @include checkedInput(true);
 }

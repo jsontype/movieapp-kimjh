@@ -5,9 +5,11 @@
     text-decoration: none;
     color: black;
     border: 1px solid gray;
+
     @if ($border-top) {
         border-top: $px;
     }
+
     width: $border-width;
     margin-bottom: 10px;
 }

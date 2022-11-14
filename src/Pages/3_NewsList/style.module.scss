@@ -2,15 +2,17 @@
 
 @mixin hasDomain($isDomain) {
     @if ($isDomain) {
-        color:  $color-gray;
+        color: $color-gray;
         font-size: $font-mid;
-    } 
+    }
+
     @else {
-        color:  $color-red;
+        color: $color-red;
         font-style: $font-italic;
         font-size: $font-small;
     }
 }
+
 .newsTitle {
     display: block;
     text-decoration: none;

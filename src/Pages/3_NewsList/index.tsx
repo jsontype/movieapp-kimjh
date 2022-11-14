@@ -1,12 +1,12 @@
-import React from 'react'
-import styles from './style.module.scss'
+import React from "react";
+import styles from "./style.module.scss";
 
 type NewsListProps = {
-  news: any[]
-}
+  news: any[];
+};
 
-export default function NewsList({news} :NewsListProps) {
-  const readMore = '👆..click read more'
+export default function NewsList({ news }: NewsListProps) {
+  const readMore = "👆..click read more";
   const render = news.map((item) => {
     const comments = item.comments_count && "🖌" + item.comments_count;
     return (
@@ -26,5 +26,3 @@ export default function NewsList({news} :NewsListProps) {
 
   return <>{render}</>;
 }
-
-
