@@ -4,7 +4,8 @@ import Home from "./Pages/0_Home";
 import About from "./Pages/1_About";
 import MovieList from "./Pages/2_MovieList";
 import NewsList from "./Pages/3_NewsList";
-import TodoList from "./Pages/4_TodoLiist";
+// import TodoList from "./Pages/4_TodoLiist";
+import TodoContainer from "./Components/TodoList/container";
 import styles from "./style.module.scss";
 import { FaBars } from "react-icons/fa";
 
@@ -12,7 +13,7 @@ export default function App() {
   // JS
   const [movies, setMovies] = useState([]);
   const [news, setNews] = useState([]);
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     fetch("https://yts.mx/api/v2/list_movies.json?sort_by=rating")
@@ -30,10 +31,6 @@ export default function App() {
         setNews(json);
       });
   }, []);
-
-  const onClick = () => {
-    alert("onClick");
-  };
 
   return (
     <Router>
@@ -66,10 +63,7 @@ export default function App() {
           <Route path="/About" element={<About />} />
           <Route path="/NewsList" element={<NewsList news={news} />} />
           <Route path="/MovieList" element={<MovieList movies={movies} />} />
-          <Route
-            path="/TodoList"
-            element={<TodoList todos={todos} setTodos={setTodos} />}
-          />
+          <Route path="/TodoList" element={<TodoContainer />} />
         </Routes>
       </main>
     </Router>
