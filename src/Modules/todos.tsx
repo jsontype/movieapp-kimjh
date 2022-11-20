@@ -4,13 +4,14 @@ const TOGGLE_TODO = "todos/TOGGLE_TODO";
 const DELETE_TODO = "todos/DELETE_TODO";
 
 // action fuction
-let nextId: number = 1;
+let nextId: number = 2;
 
 export const addTodo = (text: string) => ({
   type: ADD_TODO,
   todo: {
     id: nextId++,
-    text,
+    title: text,
+    completed: false,
   },
 });
 export const toggleTodo = (id: number, completed: boolean) => ({
@@ -27,13 +28,13 @@ export const deleteTodo = (id: number) => ({
 const initState = [
   {
     id: 1,
-    text: "",
+    title: "할일목록",
     completed: false,
   },
 ];
 
 // reducer
-export default function todoReducer(
+export default function todos (
   state = initState,
   action: {
     id: number;
@@ -48,7 +49,7 @@ export default function todoReducer(
       return state.map((todo) => {
         return todo.id === action.id
           ? { ...todo, completed: !todo.completed }
-          : todo;
+          : { ...todo };
       });
     case DELETE_TODO:
       return state.filter((todo) => {

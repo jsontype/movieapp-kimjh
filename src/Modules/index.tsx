@@ -1,9 +1,9 @@
-import todoReducer from "./todos";
+import todos from "./todos";
 // import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  todoReducer,
+  todos,
 });
 
 export default rootReducer;

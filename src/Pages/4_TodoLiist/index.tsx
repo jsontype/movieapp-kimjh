@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 
 type TodoProps = {
@@ -7,16 +7,21 @@ type TodoProps = {
   completed: boolean;
 };
 
-export default function TodoList() {
+type TodoListProps = {
+  todos: TodoProps[];
+  onCreate: (text: string) => void;
+  onToggle: (id: number, completed: boolean) => void;
+  onDelete: (id: number) => void;
+}
+
+export default function TodoList({ todos, onCreate, onToggle, onDelete }: TodoListProps) {
   const [inputText, setInputText] = useState("");
-  const [todos, setTodos] = useState<TodoProps[]>([]);
   const [isError, setIsError] = useState(false);
   const [inputStyle, setInputStyle] = useState(styles.inputNormal);
 
   const onSumbit = (e: { preventDefault: () => void }) => {
     e.preventDefault(); // form의 리다이렉팅을 방지
 
-    // p1 삼항연사자를 쓰는 법?
     if (inputText.length === 0) {
       setIsError(true);
       setInputStyle(styles.inputError);
@@ -28,47 +33,20 @@ export default function TodoList() {
     }
   };
 
-  let nextId = useRef(1);
-  const onCreate = (inputText: string) => {
-    const todoNew = {
-      title: inputText,
-      id: nextId.current++,
-      completed: false,
-    };
-
-    setTodos([todoNew, ...todos]);
-  };
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
 
-  const onDelete = (id: number) => {
-    const result = todos.filter((item) => {
-      return item.id !== id;
-    });
-    setTodos(result);
-  };
-
-  const onChecked = (id: number) => {
-    const result = todos.map((item) => {
-      return item.id === id
-        ? { ...item, completed: !item.completed }
-        : { ...item };
-    });
-    setTodos(result);
-  };
-
-  const render = todos.map((item) => {
+  const render = todos.map((item: TodoProps) => {
     const titleClass = item.completed ? styles.checked : "unchecked";
     console.log("todo.map(item.id): ", item);
 
     return (
       <div className={styles.todo} key={item.id}>
         <span>{item.id} : </span>
-        <span className={titleClass} onClick={() => onChecked(item.id)}>
-          <input type="text" value={item.title} disabled />
-          {item.completed && "👍"}
+        <span className={titleClass} onClick={() => onToggle(item.id, item.completed)}></span>
+        <span>{item.title}</span>
+        <span>{item.completed && "👍"}
         </span>
         <span className={styles.deleteBtn} onClick={() => onDelete(item.id)}>
           ❌
@@ -84,8 +62,8 @@ export default function TodoList() {
           className={inputStyle}
           name="todo"
           type="text"
-          onChange={(e) => onChange(e)}
           value={inputText}
+          onChange={onChange}
         />
         <button type="submit">Send</button>
         <span className={styles.ErrorMsg}>
