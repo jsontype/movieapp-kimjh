@@ -1,13 +1,29 @@
 @import '../../Styles/resources.scss';
+
 @mixin hover($hoverVar) {
   cursor: pointer;
+
   @if ($hoverVar) {
     background-color: $color-yellow;
   }
+
   @else {
     background-color: $color-black;
     font-size: 16px;
   }
+}
+
+@mixin checkedInput($result) {
+  padding: ".375rem .75rem";
+
+  @if ($result) {
+    border: 1px solid $color-green;
+  }
+
+  @else {
+    border: 1px solid $color-red;
+  }
+
 }
 
 .App {
@@ -34,6 +50,20 @@ h1 {
 .deleteBtn:hover {
   @include hover(false);
 }
+
 .todo {
   margin: 20px;
+}
+
+.inputNormal {
+  @include checkedInput(true);
+}
+
+.inputError {
+  @include checkedInput(false);
+}
+
+.ErrorMsg {
+  color: $color-red;
+  font-style: $font-italic;
 }
